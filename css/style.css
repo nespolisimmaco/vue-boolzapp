@@ -55,7 +55,7 @@ body {
 .users-header,
 .chat-header {
     background-color: var(--column-header);
-    min-height: var(--chat-header);
+    max-height: var(--chat-header);
     display: flex;
     align-items: center;
     padding: 10px;
@@ -152,6 +152,11 @@ body {
 .user {
     display: flex;
     padding: 10px 0 10px 1rem;
+    cursor: pointer;
+}
+
+.user-active {
+    background-color: lightgrey;
 }
 
 /* User photo */
@@ -195,11 +200,21 @@ body {
     flex-direction: column;
 }
 
+/* Chat header */
+.user-chatting-name {
+    font-weight: 500;
+    flex-grow: 1;
+    padding: 0 1rem;
+    font-size: .9rem;
+}
+
+/* Chat */
 .chat {
     flex-grow: 1;
     background-image: url(../img/mine.jpg) ;
 }
 
+/* Chat footer */
 .chat-footer {
     background-color: var(--column-header);
     min-height: var(--chat-header);

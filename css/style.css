@@ -1,3 +1,8 @@
+/* ***** VARIABLES ***** */
+:root {
+    --column-header: #eaeaea;
+}
+
 /* ********** RESET ********** */
 * {
     margin: 0;
@@ -31,8 +36,8 @@ body {
 .users-col {
     height: 100%;
     width: 40%;
-    /* debug */
-    background-color: chartreuse;
+    border-right: 1px solid grey;
+    background-color: white;
 }
 
 .chat-col {
@@ -40,4 +45,68 @@ body {
     width: 60%;
     /* debug */
     background-color: chocolate;
+}
+
+.users-header,
+.chat-header {
+    background-color: var(--column-header);
+    height: 50px;
+}
+
+/* ----- Users column ----- */
+
+/* -- Enable notifications -- */
+.enable-notifications {
+    background-color: #8edafc;
+    display: flex;
+    padding: 1rem;
+}
+
+.notifications-bell {
+    background-color: white;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    color: #8edafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.enable div {
+    font-weight: 500;
+}
+
+.enable a {
+    font-size: .8rem;
+    color: grey;
+}
+
+/* -- Find chat input field -- */
+.find-chat form {
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.find-chat {
+    padding: 5px;
+}
+
+.find-chat button {
+    width: 15%;
+    padding: 10px 1rem;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    color: grey;
+}
+
+.find-chat input {
+    padding: 10px 1rem;
+    border: none;
+    width: 85%;
+    border-radius: 5px;
 }

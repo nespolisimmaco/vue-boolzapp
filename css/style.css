@@ -1,6 +1,8 @@
 /* ***** VARIABLES ***** */
 :root {
     --column-header: #eaeaea;
+    --chat-header: 70px;
+    --light-text: rgb(185, 185, 185); 
 }
 
 /* ********** RESET ********** */
@@ -10,10 +12,14 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* ********** GENERAL ********** */
 body {
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(180deg, #009688 15%, #d9dbd4 15% 100%);
+    background: linear-gradient(180deg, #009688 20%, #d9dbd4 20% 100%);
 }
 
 /* ********** MAIN ********** */
@@ -38,6 +44,8 @@ body {
     width: 40%;
     border-right: 1px solid grey;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-col {
@@ -50,7 +58,10 @@ body {
 .users-header,
 .chat-header {
     background-color: var(--column-header);
-    height: 50px;
+    min-height: var(--chat-header);
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
 /* ----- Users column ----- */
@@ -101,7 +112,7 @@ body {
     background-color: white;
     cursor: pointer;
     border-radius: 5px;
-    color: grey;
+    color: var(--light-text);
 }
 
 .find-chat input {
@@ -109,4 +120,51 @@ body {
     border: none;
     width: 85%;
     border-radius: 5px;
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+/* -- Users -- */
+.users {
+    overflow-y: auto;
+}
+
+.user {
+    display: flex;
+    padding: 10px 0 10px 1rem;
+}
+
+/* User photo */
+.user-photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.user-photo img {
+    border-radius: 50%;
+}
+
+/* User infos */
+.user-infos {
+    flex-grow: 1;
+    padding: 0 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.last-message {
+    color: var(--light-text);
+    font-size: .8rem;
+    margin-top: 5px;
+}
+
+/* Time of message delivery */
+.time {
+    width: 50px;
+    font-size: .7rem;
+    color: var(--light-text);
 }

@@ -27,7 +27,7 @@
                     <div class="users-col">
                         <!-- Users header -->
                         <div class="users-header">
-
+                            Lorem ipsum dolor sit amet.
                         </div>
                         <!-- Enable notifications -->
                         <div class="enable-notifications">
@@ -52,7 +52,29 @@
 
                         <!-- Users section -->
                         <div class="users">
-                            
+                            <!-- User -->
+                            <div class="user" v-for="user in contacts">
+                                <!-- User photo -->
+                                <div class="user-photo">
+                                    <img :src=" `img/avatar${user.avatar}.jpg` " :alt="user.name">
+                                </div>
+                                <!-- User infos -->
+                                <div class="user-infos">
+                                    <!-- User name -->
+                                    <div class="user-name">
+                                        {{ user.name }}
+                                    </div>
+                                    <!-- Last message -->
+                                    <div class="last-message">
+                                        <span>Ultimo messaggio inviato</span>
+                                    </div>
+                                </div>
+                                <!-- Time of message delivery -->
+                                <div class="time">
+                                    <span>12:00</span>
+                                </div>
+                            </div>
+                            <!-- End User -->
                         </div>
                         <!-- End Users section -->
                     </div>

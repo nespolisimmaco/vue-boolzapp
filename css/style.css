@@ -35,8 +35,6 @@ body {
     height: 100%;
     min-width: 800px;
     display: flex;
-    /* debug */
-    border: 1px solid black;
 }
 
 .users-col {
@@ -51,10 +49,9 @@ body {
 .chat-col {
     height: 100%;
     width: 60%;
-    /* debug */
-    background-color: chocolate;
 }
 
+/* -- Users and chat Header -- */
 .users-header,
 .chat-header {
     background-color: var(--column-header);
@@ -64,12 +61,17 @@ body {
     padding: 10px;
 }
 
-/* ----- Users column ----- */
-/* -- Header -- */
-.users-header {
+.users-header .user-icons,
+.chat-header .user-icons {
+    width: 20%;
+    color: var(--light-text);
     display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
 }
 
+/* ----- Users column ----- */
+/* -- Header -- */
 .users-header img {
     width: 60px;
     height: 60px;
@@ -82,14 +84,6 @@ body {
     flex-grow: 1;
     padding: 0 1rem;
     font-size: .9rem;
-}
-
-.users-header .user-icons {
-    width: 20%;
-    color: var(--light-text);
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.2rem;
 }
 
 /* -- Enable notifications -- */
@@ -193,4 +187,20 @@ body {
     width: 50px;
     font-size: .7rem;
     color: var(--light-text);
+}
+
+/* ----- Chat ----- */
+.chat-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat {
+    flex-grow: 1;
+    background-image: url(../img/mine.jpg) ;
+}
+
+.chat-footer {
+    background-color: var(--column-header);
+    min-height: var(--chat-header);
 }

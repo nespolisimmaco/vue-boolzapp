@@ -70,6 +70,10 @@ body {
     font-size: 1.2rem;
 }
 
+.user-icons a {
+    color: inherit;
+}
+
 /* ----- Users column ----- */
 /* -- Header -- */
 .users-header img {
@@ -156,7 +160,7 @@ body {
 }
 
 .user-active {
-    background-color: lightgrey;
+    background-color: #e9ebeb;
 }
 
 /* User photo */
@@ -217,5 +221,30 @@ body {
 /* Chat footer */
 .chat-footer {
     background-color: var(--column-header);
-    min-height: var(--chat-header);
+    height: calc(var(--chat-header) - 15px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-footer .emoji,
+.chat-footer .voice-message {
+    width: 10%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: grey;
+    font-size: 1.2rem;
+}
+
+.chat-footer .write-message {
+    flex-grow: 1;
+    padding: 7px 0;
+}
+
+.write-message input {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 0 1rem;
 }

@@ -30,9 +30,9 @@
                             <img src="img/myAvatar.png" alt="My photo">
                             <div class="my-name">Simmaco</div>
                             <div class="user-icons">
-                                <i class="fa-solid fa-circle-notch"></i>
-                                <i class="fa-solid fa-message"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                                <a href="#"><i class="fa-solid fa-message"></i></a>
+                                <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             </div>
                         </div>
                         <!-- Enable notifications -->
@@ -99,9 +99,9 @@
                                 {{ contacts[activeUser].name }}
                             </div>
                             <div class="user-icons">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <i class="fa-solid fa-paperclip"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                <a href="#"><i class="fa-solid fa-paperclip"></i></a>
+                                <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             </div>
                         </div>
                         <!-- Chat -->
@@ -110,7 +110,18 @@
                         </div>
                         <!-- Chat footer -->
                         <div class="chat-footer">
-
+                            <!-- Emoji -->
+                            <div class="emoji">
+                                <i class="fa-regular fa-face-smile"></i>
+                            </div>
+                            <!-- Write message (Input field) -->
+                            <div class="write-message">
+                                <input type="text" placeholder="Scrivi un messaggio">
+                            </div>
+                            <!-- Voice message -->
+                            <div class="voice-message">
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
                         </div>
                         <!-- End Chat footer -->
                     </div>

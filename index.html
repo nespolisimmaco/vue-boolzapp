@@ -95,8 +95,13 @@
                                 <img :src=" `img/avatar${contacts[activeUser].avatar}.jpg` " :alt="contacts[activeUser].name">
                             </div>
                             <!-- User chatting name -->
-                            <div class="user-chatting-name">
-                                {{ contacts[activeUser].name }}
+                            <div class="user-chatting">
+                                <div class="user-chatting-name">
+                                    {{ contacts[activeUser].name }}
+                                </div>
+                                <div class="last-access">
+                                    Ultimo accesso oggi alle 12:00
+                                </div>
                             </div>
                             <div class="user-icons">
                                 <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -106,7 +111,15 @@
                         </div>
                         <!-- Chat -->
                         <div class="chat">
-
+                            <!-- Chat message (row) -->
+                            <div class="chat-message" :class="text.status === 'sent' ? 'justify-end' : ''" v-for="text in contacts[activeUser].messages">
+                                <!-- Message -->
+                                <div class="chat-text" :class="{'sent-message': text.status === 'sent', 'received-message': text.status === 'received'}">
+                                    {{ text.message }}
+                                    <!-- Sent time -->
+                                    <div>12:00</div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Chat footer -->
                         <div class="chat-footer">

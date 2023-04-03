@@ -3,7 +3,8 @@
     --column-header: #eaeaea;
     --chat-header: 70px;
     --light-text: rgb(185, 185, 185);
-    --sent-message: #d5f9ba; 
+    --sent-message: #d5f9ba;
+    --user-active: #e9ebeb;
 }
 
 /* ********** RESET ********** */
@@ -152,16 +153,18 @@ body {
 /* -- Users -- */
 .users {
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .user {
     display: flex;
     padding: 10px 0 10px 1rem;
     cursor: pointer;
+    border-bottom: 1px solid var(--user-active);
 }
 
 .user-active {
-    background-color: #e9ebeb;
+    background-color: var(--user-active);
 }
 
 /* User photo */

@@ -1,5 +1,7 @@
 const { createApp } = Vue;
 
+const dt = luxon.DateTime;
+
 createApp({
     data() {
         return {
@@ -166,12 +168,35 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            // Nuovo messaggio inviato da me
+            newSentMessage: {
+                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                message: '',
+                status: 'sent' 
+            },
+            // Nuovo messaggio di risposta dell'interlocutore
+            newReceivedMessage: {
+                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                message: 'ok',
+                status: 'received' 
+            }
         }
     },
     methods: {
         chooseUser(index) {
             this.activeUser = index;
+        },
+        // Invio di un mio messaggio
+        sendMessage() {
+            if (this.newSentMessage.message.length > 0) {
+                this.contacts[this.activeUser].messages.push({...this.newSentMessage});
+            }
+            this.newSentMessage.message = "";
+            // Risposta dell'interlocutore dopo 1 secondo
+            setTimeout(() => {
+                this.contacts[this.activeUser].messages.push({...this.newReceivedMessage}); 
+            }, 1000);
         }
     }
 }).mount("#app");

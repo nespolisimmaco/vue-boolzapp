@@ -252,11 +252,12 @@ body {
     min-width: 40%;
     font-size: .8rem;
     position: relative;
+    word-wrap: break-word;
 }
 
 .chat-text div {
     position: absolute;
-    bottom: 5px;
+    bottom: 2px;
     right: 5px;
     font-size: .5rem;
     font-weight: 500;

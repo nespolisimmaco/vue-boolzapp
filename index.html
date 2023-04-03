@@ -117,7 +117,7 @@
                                 <div class="chat-text" :class="{'sent-message': text.status === 'sent', 'received-message': text.status === 'received'}">
                                     {{ text.message }}
                                     <!-- Sent time -->
-                                    <div>12:00</div>
+                                    <div>{{ text.date }}</div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                             </div>
                             <!-- Write message (Input field) -->
                             <div class="write-message">
-                                <input type="text" placeholder="Scrivi un messaggio">
+                                <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newSentMessage.message" @keyup.enter="sendMessage">
                             </div>
                             <!-- Voice message -->
                             <div class="voice-message">
@@ -144,6 +144,8 @@
             <!-- End Wrapper -->
         </main>
     </div>
+    <!-- Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!-- Javascript -->
     <script src="js/script.js"></script>
 </body>

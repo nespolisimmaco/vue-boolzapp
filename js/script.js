@@ -7,6 +7,8 @@ createApp({
         return {
             activeUser: 0,
             findUser: '',
+            dropdownIndex: 0,
+            showDropdown: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -206,6 +208,15 @@ createApp({
             // Controllo che le lettere inserite in 'findUser' siano contenute nei nomi degli utenti
                 user.name.toLowerCase().includes(this.findUser)
             );
-        }
+        },
+        // Prendo l'indice del messaggio selezionato e mostro il menu a tendina relativo a questo messaggio
+        showMenu(indexToShow) {
+            this.dropdownIndex = indexToShow;
+            this.showDropdown = !this.showDropdown;
+        },
+        // Cancellare un messaggio
+        deleteMessage(indexToRemove) {
+            this.contacts[this.activeUser].messages.splice(indexToRemove, 1);
+        },
     }
 }).mount("#app");

@@ -251,6 +251,7 @@ body {
 /* Sent and received messages */
 .chat-text {
     padding: 10px;
+    padding-right: 20px;
     border-radius: 10px;
     max-width: 50%;
     min-width: 40%;
@@ -259,7 +260,7 @@ body {
     word-wrap: break-word;
 }
 
-.chat-text div {
+.chat-text .sent-time {
     position: absolute;
     bottom: 2px;
     right: 5px;
@@ -275,6 +276,54 @@ body {
 .received-message {
     background-color: white;
 }
+
+/* ----- Dropdown menu to delete message ----- */
+/* Chevron to show dropdown menu */
+.chat-text .dropdown {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    font-size: .9rem;
+    color: var(--light-text);
+    display: none;
+    cursor: pointer;
+}
+
+.chat-text:hover .dropdown {
+    display: block;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0px 8px 20px 3px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.dropdown-menu li {
+    list-style-type: none;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:first-child {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dropdown-menu li:hover {
+    background-color: lightgrey;
+}
+/* ----- End Dropdown menu to delete message ----- */
 
 /* Chat footer */
 .chat-footer {

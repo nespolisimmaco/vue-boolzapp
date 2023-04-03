@@ -137,12 +137,21 @@
                         <!-- Chat -->
                         <div class="chat">
                             <!-- Chat message (row) -->
-                            <div class="chat-message" :class="text.status === 'sent' ? 'justify-end' : ''" v-for="text in contacts[activeUser].messages">
+                            <div class="chat-message" :class="text.status === 'sent' ? 'justify-end' : ''" v-for="(text, index) in contacts[activeUser].messages">
                                 <!-- Message -->
                                 <div class="chat-text" :class="{'sent-message': text.status === 'sent', 'received-message': text.status === 'received'}">
                                     {{ text.message }}
                                     <!-- Sent time -->
-                                    <div>{{ text.date }}</div>
+                                    <div class="sent-time">{{ text.date }}</div>
+                                    <!-- Dropdown menu -->
+                                    <div class="dropdown" @click="showMenu(index)"><i class="fa-solid fa-chevron-down"></i></div>
+                                    <div v-if="index === dropdownIndex" v-show="showDropdown" class="dropdown-menu">
+                                        <ul>
+                                            <li>Info messaggio</li>
+                                            <li @click="deleteMessage(index)">Cancella messaggio</li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Dropdown menu -->
                                 </div>
                             </div>
                         </div>

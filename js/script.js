@@ -6,6 +6,7 @@ createApp({
     data() {
         return {
             activeUser: 0,
+            findUser: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -197,6 +198,14 @@ createApp({
             setTimeout(() => {
                 this.contacts[this.activeUser].messages.push({...this.newReceivedMessage}); 
             }, 1000);
+        },
+        // Ricerca di un utente
+        searchUser() {
+            // Filtro l'array di oggetti 'contacts' confrontando 'findUser' e i nomi degli utenti
+            return this.contacts.filter((user) =>
+            // Controllo che le lettere inserite in 'findUser' siano contenute nei nomi degli utenti
+                user.name.toLowerCase().includes(this.findUser)
+            );
         }
     }
 }).mount("#app");

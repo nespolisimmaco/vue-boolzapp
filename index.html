@@ -51,7 +51,7 @@
                         <div class="find-chat">
                             <form>
                                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                <input type="search" placeholder="Cerca o inizia una nuova chat">
+                                <input type="search" v-model.trim="findUser" placeholder="Cerca o inizia una nuova chat">
                             </form>
                         </div>
                         <!-- End Find chat input field -->
@@ -59,7 +59,32 @@
                         <!-- Users section -->
                         <div class="users">
                             <!-- User -->
-                            <div class="user" :class=" activeUser === index ? 'user-active' : '' " v-for="(user, index) in contacts" @click="chooseUser(index)">
+                            <!-- If 'findUser' is not empty -->
+                            <div v-if="findUser" class="user" :class=" activeUser === index ? 'user-active' : '' " v-for="(user, index) in searchUser()" @click="chooseUser(index)">
+                                <!-- User photo -->
+                                <div class="user-photo">
+                                    <img :src=" `img/avatar${user.avatar}.jpg` " :alt="user.name">
+                                </div>
+                                <!-- User infos -->
+                                <div class="user-infos">
+                                    <!-- User name -->
+                                    <div class="user-name">
+                                        {{ user.name }}
+                                    </div>
+                                    <!-- Last message -->
+                                    <div class="last-message">
+                                        <span>Ultimo messaggio inviato</span>
+                                    </div>
+                                </div>
+                                <!-- Time of message delivery -->
+                                <div class="time">
+                                    <span>12:00</span>
+                                </div>
+                            </div>
+                            
+                            <!-- User -->
+                            <!-- If 'findUser' is empty -->
+                            <div v-else class="user" :class=" activeUser === index ? 'user-active' : '' " v-for="(user, index) in contacts" @click="chooseUser(index)">
                                 <!-- User photo -->
                                 <div class="user-photo">
                                     <img :src=" `img/avatar${user.avatar}.jpg` " :alt="user.name">

@@ -163,6 +163,10 @@ body {
     border-bottom: 1px solid var(--user-active);
 }
 
+.user:hover {
+    background-color: var(--user-active);
+}
+
 .user-active {
     background-color: var(--user-active);
 }

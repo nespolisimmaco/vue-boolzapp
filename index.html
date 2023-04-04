@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Vue Js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,12 +98,12 @@
                                     </div>
                                     <!-- Last message -->
                                     <div class="last-message">
-                                        <span>Ultimo messaggio inviato</span>
+                                        <span>{{ getLastMessage(index) }}</span>
                                     </div>
                                 </div>
                                 <!-- Time of message delivery -->
                                 <div class="time">
-                                    <span>12:00</span>
+                                    <span>{{ getLastMessageTime(index) }}</span>
                                 </div>
                             </div>
                             <!-- End User -->
@@ -125,7 +126,7 @@
                                     {{ contacts[activeUser].name }}
                                 </div>
                                 <div class="last-access">
-                                    Ultimo accesso oggi alle 12:00
+                                    Ultimo accesso oggi alle <span>{{ getUserLastAccess(activeUser) }}</span>
                                 </div>
                             </div>
                             <div class="user-icons">
@@ -163,7 +164,7 @@
                             </div>
                             <!-- Write message (Input field) -->
                             <div class="write-message">
-                                <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newSentMessage.message" @keyup.enter="sendMessage">
+                                <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage" @keyup.enter="sendMessage">
                             </div>
                             <!-- Voice message -->
                             <div class="voice-message">

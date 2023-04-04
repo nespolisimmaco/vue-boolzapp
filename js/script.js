@@ -9,6 +9,7 @@ createApp({
             findUser: '',
             dropdownIndex: 0,
             showDropdown: false,
+            newMessage: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -171,35 +172,42 @@ createApp({
                         }
                     ],
                 }
-            ],
-            // Nuovo messaggio inviato da me
-            newSentMessage: {
-                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
-                message: '',
-                status: 'sent' 
-            },
-            // Nuovo messaggio di risposta dell'interlocutore
-            newReceivedMessage: {
-                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
-                message: 'ok',
-                status: 'received' 
-            }
+            ]
         }
     },
     methods: {
+        // Scegli utente con cui chattare
         chooseUser(index) {
             this.activeUser = index;
         },
         // Invio di un mio messaggio
         sendMessage() {
-            if (this.newSentMessage.message.length > 0) {
-                this.contacts[this.activeUser].messages.push({...this.newSentMessage});
+            if (this.newMessage.length > 0) {
+                this.newSentMessage();
+                // Risposta dell'interlocutore dopo 1 secondo
+                setTimeout(() => {
+                    this.newReceivedMessage();
+                }, 1000);
             }
-            this.newSentMessage.message = "";
-            // Risposta dell'interlocutore dopo 1 secondo
-            setTimeout(() => {
-                this.contacts[this.activeUser].messages.push({...this.newReceivedMessage}); 
-            }, 1000);
+        },
+        // Nuovo messaggio inviato da me
+        newSentMessage() {
+            const newMessage = {
+                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                message: this.newMessage,
+                status: 'sent'
+            };
+            this.contacts[this.activeUser].messages.push(newMessage);
+            this.newMessage = "";
+        },
+        // Nuovo messaggio di risposta dell'interlocutore
+        newReceivedMessage() {
+            const newMessageReceived = {
+                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                message: 'ok',
+                status: 'received' 
+            }
+            this.contacts[this.activeUser].messages.push(newMessageReceived); 
         },
         // Ricerca di un utente
         searchUser() {
@@ -218,5 +226,30 @@ createApp({
         deleteMessage(indexToRemove) {
             this.contacts[this.activeUser].messages.splice(indexToRemove, 1);
         },
+        // Prendo l'ultimo messaggio
+        getLastMessage(indexToShow) {
+            console.log(indexToShow);
+            return this.contacts[indexToShow].messages[
+                this.contacts[indexToShow].messages.length-1
+            ].message;
+        },
+        // Prendo l'orario dell'ultimo messaggio
+        getLastMessageTime(indexToShow) {
+            return this.contacts[indexToShow].messages[
+                this.contacts[indexToShow].messages.length-1
+            ].date;
+        },
+        // Prendo l'orario dell'ultimo accesso dell'utente scelto
+        getUserLastAccess(user) {
+            let userAccess;
+            this.contacts[this.activeUser].messages.forEach(message => {
+                console.log(message);
+                if (message.status === 'received') {
+                    console.log(message.date);
+                    userAccess = message.date;
+                }
+            });
+            return userAccess; 
+        }
     }
 }).mount("#app");

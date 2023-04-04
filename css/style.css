@@ -328,7 +328,7 @@ body {
 /* Chat footer */
 .chat-footer {
     background-color: var(--column-header);
-    height: calc(var(--chat-header) - 15px);
+    min-height: calc(var(--chat-header) - 15px);
     display: flex;
     justify-content: space-between;
 }
